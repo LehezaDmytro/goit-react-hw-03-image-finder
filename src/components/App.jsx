@@ -92,13 +92,6 @@ export class App extends Component {
           </Modal>
         )}
         <Searchbar onSubmit={this.onSubmit} />
-        {loader && (
-          <Hearts
-            color="#4fa94d"
-            ariaLabel="hearts-loading"
-            wrapperClass="Loader"
-          />
-        )}
         {error && <p className="Error">{error}</p>}
         {message && (
           <p className="Message">
@@ -108,6 +101,13 @@ export class App extends Component {
         <ImageGallery>
           <ImageGalleryItem items={items} showModal={this.showModal} />
         </ImageGallery>
+        {loader && (
+          <Hearts
+            color="#4fa94d"
+            ariaLabel="hearts-loading"
+            wrapperClass="Loader"
+          />
+        )}
         {Boolean(items.length) && <Button loadMore={this.loadMore} />}
       </div>
     );
