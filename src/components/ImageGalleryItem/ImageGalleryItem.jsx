@@ -1,31 +1,24 @@
 import PropTypes from 'prop-types';
 
-export const ImageGalleryItem = ({ items, showModal }) => {
+export const ImageGalleryItem = ({
+  imageURL,
+  showModal,
+  largeImageURL,
+  tags,
+}) => {
   return (
-    <>
-      {items.map(element => (
-        <li
-          key={element.id}
-          onClick={() => showModal(element.id)}
-          className="ImageGalleryItem"
-        >
-          <img
-            className="ImageGalleryItem-image"
-            src={element.webformatURL}
-            alt=""
-          />
-        </li>
-      ))}
-    </>
+    <li
+      onClick={() => showModal(largeImageURL, tags)}
+      className="ImageGalleryItem"
+    >
+      <img className="ImageGalleryItem-image" src={imageURL} alt={tags} />
+    </li>
   );
 };
 
 ImageGalleryItem.propTypes = {
   showModal: PropTypes.func.isRequired,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      webformatURL: PropTypes.string.isRequired,
-    })
-  ),
+  imageURL: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
 };

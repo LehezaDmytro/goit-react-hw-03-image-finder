@@ -1,9 +1,30 @@
+import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
 
-export const ImageGallery = ({ children }) => {
-  return <ul className="ImageGallery">{children}</ul>;
+export const ImageGallery = ({ items, showModal }) => {
+  return (
+    <ul className="ImageGallery">
+      {items.map(item => (
+        <ImageGalleryItem
+          key={item.id}
+          imageURL={item.webformatURL}
+          showModal={showModal}
+          largeImageURL={item.largeImageURL}
+          tags={item.tags}
+        />
+      ))}
+    </ul>
+  );
 };
 
 ImageGallery.propTypes = {
-  children: PropTypes.node.isRequired,
+  showModal: PropTypes.func.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+    })
+  ),
 };
