@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const ImageGalleryItem = ({ items, showModal }) => {
   return (
     <>
@@ -16,4 +18,14 @@ export const ImageGalleryItem = ({ items, showModal }) => {
       ))}
     </>
   );
+};
+
+ImageGalleryItem.propTypes = {
+  showModal: PropTypes.func.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+    })
+  ),
 };
