@@ -27,7 +27,7 @@ export class App extends Component {
     const { searchRequest, page } = this.state;
 
     if (prevState.searchRequest !== searchRequest || prevState.page !== page) {
-      this.featchPost(prevState);
+      this.featchPost();
     }
   }
 
